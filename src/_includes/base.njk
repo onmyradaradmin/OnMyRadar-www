@@ -4,27 +4,38 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{ description }}">
-    <meta name="theme-color" content="#635bff">
+    <meta name="theme-color" content="#f6f3ec">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="OnMyRadar">
+    <meta property="og:title" content="{{ title }} · OnMyRadar">
+    <meta property="og:description" content="{{ description }}">
+    <meta property="og:url" content="https://onmyradar.pro{{ page.url }}">
+    <meta name="twitter:card" content="summary">
     <link rel="canonical" href="https://onmyradar.pro{{ page.url }}">
+    {% if alternateUrl %}
+      <link rel="alternate" hreflang="{{ locale }}" href="https://onmyradar.pro{{ page.url }}">
+      <link rel="alternate" hreflang="{{ 'de' if locale == 'en' else 'en' }}" href="https://onmyradar.pro{{ alternateUrl }}">
+      <link rel="alternate" hreflang="x-default" href="https://onmyradar.pro{{ page.url if locale == 'en' else alternateUrl }}">
+    {% endif %}
     <link rel="stylesheet" href="{{ '/assets/styles.css' | url }}">
     <link rel="icon" href="{{ '/assets/OnMyRadar-logo.png' | url }}">
     <title>{{ title }} · OnMyRadar</title>
   </head>
   <body>
+    <a class="skip-link" href="#content">{{ 'Skip to content' if locale == 'en' else 'Zum Inhalt springen' }}</a>
     <header class="site-header">
-      <a class="brand" href="{{ ('/' if locale == 'en' else '/de/') | url }}">
-        <img src="{{ '/assets/OnMyRadar-logo.png' | url }}" width="44" height="44" alt="">
-        <span>OnMyRadar</span>
-      </a>
-      <nav aria-label="{{ 'Language and legal' if locale == 'en' else 'Sprache und Rechtliches' }}">
-        <a href="{{ '/' | url }}">EN</a><a href="{{ '/de/' | url }}">DE</a>
-        <a href="{{ ('/privacy/' if locale == 'en' else '/de/datenschutz/') | url }}">{{ 'Privacy' if locale == 'en' else 'Datenschutz' }}</a>
-        <a href="{{ ('/terms/' if locale == 'en' else '/de/nutzungsbedingungen/') | url }}">{{ 'Terms' if locale == 'en' else 'Bedingungen' }}</a>
+      <a class="brand" href="{{ ('/' if locale == 'en' else '/de/') | url }}" aria-label="OnMyRadar {{ 'home' if locale == 'en' else 'Startseite' }}"><img src="{{ '/assets/OnMyRadar-logo.png' | url }}" width="42" height="42" alt=""><span>OnMyRadar</span></a>
+      <nav aria-label="{{ 'Main navigation' if locale == 'en' else 'Hauptnavigation' }}">
+        <a class="nav-home" href="{{ ('/#how-it-works' if locale == 'en' else '/de/#so-funktioniert-es') | url }}">{{ 'How it works' if locale == 'en' else 'So funktioniert es' }}</a>
+        <span class="language-switcher" aria-label="{{ 'Language' if locale == 'en' else 'Sprache' }}"><a href="{{ '/' | url }}"{% if locale == 'en' %} aria-current="page"{% endif %}>EN</a><a href="{{ '/de/' | url }}"{% if locale == 'de' %} aria-current="page"{% endif %}>DE</a></span>
+        <a class="nav-cta" href="mailto:info@onmyradar.pro?subject=OnMyRadar%20Beta">{{ 'Join beta' if locale == 'en' else 'Beta testen' }}</a>
       </nav>
     </header>
-    <main>{{ content | safe }}</main>
+    <main id="content">{{ content | safe }}</main>
     <footer>
-      <p>© OnMyRadar · <a href="mailto:info@onmyradar.pro">info@onmyradar.pro</a></p>
+      <div><a class="brand footer-brand" href="{{ ('/' if locale == 'en' else '/de/') | url }}"><img src="{{ '/assets/OnMyRadar-logo.png' | url }}" width="38" height="38" alt=""><span>OnMyRadar</span></a><p>{{ 'The things that matter, on your radar.' if locale == 'en' else 'Was dir wichtig ist – auf deinem Radar.' }}</p></div>
+      <nav aria-label="{{ 'Legal' if locale == 'en' else 'Rechtliches' }}"><a href="{{ ('/privacy/' if locale == 'en' else '/de/datenschutz/') | url }}">{{ 'Privacy' if locale == 'en' else 'Datenschutz' }}</a><a href="{{ ('/terms/' if locale == 'en' else '/de/nutzungsbedingungen/') | url }}">{{ 'Terms' if locale == 'en' else 'Bedingungen' }}</a><a href="mailto:info@onmyradar.pro">{{ 'Contact' if locale == 'en' else 'Kontakt' }}</a></nav>
+      <p class="copyright">© 2026 OnMyRadar</p>
     </footer>
   </body>
 </html>

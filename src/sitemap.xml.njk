@@ -3,6 +3,11 @@ permalink: /sitemap.xml
 eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-{% for item in collections.all %}{% if item.url %}<url><loc>https://onmyradar.pro{{ item.url }}</loc></url>{% endif %}{% endfor %}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://onmyradar.pro/</loc><xhtml:link rel="alternate" hreflang="en" href="https://onmyradar.pro/"/><xhtml:link rel="alternate" hreflang="de" href="https://onmyradar.pro/de/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://onmyradar.pro/"/></url>
+  <url><loc>https://onmyradar.pro/de/</loc><xhtml:link rel="alternate" hreflang="en" href="https://onmyradar.pro/"/><xhtml:link rel="alternate" hreflang="de" href="https://onmyradar.pro/de/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://onmyradar.pro/"/></url>
+  <url><loc>https://onmyradar.pro/privacy/</loc><xhtml:link rel="alternate" hreflang="en" href="https://onmyradar.pro/privacy/"/><xhtml:link rel="alternate" hreflang="de" href="https://onmyradar.pro/de/datenschutz/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://onmyradar.pro/privacy/"/></url>
+  <url><loc>https://onmyradar.pro/de/datenschutz/</loc><xhtml:link rel="alternate" hreflang="en" href="https://onmyradar.pro/privacy/"/><xhtml:link rel="alternate" hreflang="de" href="https://onmyradar.pro/de/datenschutz/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://onmyradar.pro/privacy/"/></url>
+  <url><loc>https://onmyradar.pro/terms/</loc><xhtml:link rel="alternate" hreflang="en" href="https://onmyradar.pro/terms/"/><xhtml:link rel="alternate" hreflang="de" href="https://onmyradar.pro/de/nutzungsbedingungen/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://onmyradar.pro/terms/"/></url>
+  <url><loc>https://onmyradar.pro/de/nutzungsbedingungen/</loc><xhtml:link rel="alternate" hreflang="en" href="https://onmyradar.pro/terms/"/><xhtml:link rel="alternate" hreflang="de" href="https://onmyradar.pro/de/nutzungsbedingungen/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://onmyradar.pro/terms/"/></url>
 </urlset>
