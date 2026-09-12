@@ -15,4 +15,11 @@ describe("generated site", () => {
     await expect(readFile("_site/robots.txt", "utf8")).resolves.toContain("Sitemap:");
     await expect(readFile("_site/sitemap.xml", "utf8")).resolves.toContain("<urlset");
   });
+
+  it("supports the GitHub Pages project path", async () => {
+    const home = await readFile("_site/index.html", "utf8");
+    const prefix = process.env.SITE_PATH_PREFIX ?? "/";
+    expect(home).toContain(`href="${prefix}assets/styles.css"`);
+    expect(home).toContain(`src="${prefix}assets/OnMyRadar-logo.png"`);
+  });
 });

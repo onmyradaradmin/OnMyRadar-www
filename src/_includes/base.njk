@@ -6,20 +6,20 @@
     <meta name="description" content="{{ description }}">
     <meta name="theme-color" content="#635bff">
     <link rel="canonical" href="https://onmyradar.pro{{ page.url }}">
-    <link rel="stylesheet" href="/assets/styles.css">
-    <link rel="icon" href="/assets/OnMyRadar-logo.png">
+    <link rel="stylesheet" href="{{ '/assets/styles.css' | url }}">
+    <link rel="icon" href="{{ '/assets/OnMyRadar-logo.png' | url }}">
     <title>{{ title }} · OnMyRadar</title>
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="{{ '/' if locale == 'en' else '/de/' }}">
-        <img src="/assets/OnMyRadar-logo.png" width="44" height="44" alt="">
+      <a class="brand" href="{{ ('/' if locale == 'en' else '/de/') | url }}">
+        <img src="{{ '/assets/OnMyRadar-logo.png' | url }}" width="44" height="44" alt="">
         <span>OnMyRadar</span>
       </a>
       <nav aria-label="{{ 'Language and legal' if locale == 'en' else 'Sprache und Rechtliches' }}">
-        <a href="/">EN</a><a href="/de/">DE</a>
-        <a href="{{ '/privacy/' if locale == 'en' else '/de/datenschutz/' }}">{{ 'Privacy' if locale == 'en' else 'Datenschutz' }}</a>
-        <a href="{{ '/terms/' if locale == 'en' else '/de/nutzungsbedingungen/' }}">{{ 'Terms' if locale == 'en' else 'Bedingungen' }}</a>
+        <a href="{{ '/' | url }}">EN</a><a href="{{ '/de/' | url }}">DE</a>
+        <a href="{{ ('/privacy/' if locale == 'en' else '/de/datenschutz/') | url }}">{{ 'Privacy' if locale == 'en' else 'Datenschutz' }}</a>
+        <a href="{{ ('/terms/' if locale == 'en' else '/de/nutzungsbedingungen/') | url }}">{{ 'Terms' if locale == 'en' else 'Bedingungen' }}</a>
       </nav>
     </header>
     <main>{{ content | safe }}</main>
