@@ -1,0 +1,21 @@
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+
+# Dependencies and generated site output
+node_modules/
+_site/
+dist/
+coverage/
+.cache/
+
+# Hosting and tool state
+.firebase/
+.wrangler/
+
+# Editors and operating systems
+.DS_Store
+.idea/
+.vscode/
+*.swp
