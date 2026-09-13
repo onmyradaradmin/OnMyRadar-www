@@ -32,12 +32,16 @@ jobs:
       - name: Audit production dependencies
         run: npm audit --omit=dev --audit-level=high
       - uses: actions/upload-pages-artifact@v5
-        if: github.event_name != 'pull_request'
+        if: >-
+          github.event_name != 'pull_request' &&
+          github.event.repository.visibility == 'public'
         with:
           path: _site
 
   deploy:
-    if: github.event_name != 'pull_request'
+    if: >-
+      github.event_name != 'pull_request' &&
+      github.event.repository.visibility == 'public'
     needs: build
     runs-on: ubuntu-latest
     environment:
