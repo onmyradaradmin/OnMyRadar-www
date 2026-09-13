@@ -3,5 +3,7 @@ permalink: /robots.txt
 eleventyExcludeFromCollections: true
 ---
 User-agent: *
-Allow: /
+{% if isProduction %}Allow: /
 Sitemap: https://onmyradar.pro/sitemap.xml
+{% else %}Disallow: /
+{% endif %}

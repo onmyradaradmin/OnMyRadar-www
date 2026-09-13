@@ -1,0 +1,16 @@
+---
+layout: base.njk
+locale: en
+title: Delete your account
+description: How to permanently delete an OnMyRadar account and what happens to retained data.
+permalink: /delete-account/index.html
+alternateUrl: /de/konto-loeschen/
+---
+<article class="prose legal-page">
+  <header><p class="eyebrow">Account control</p><h1>Delete your account</h1><p class="lede">Deletion is permanent. Export anything you want to keep before you begin.</p></header>
+  <section><h2>Delete in the app</h2><ol><li>Open <strong>Profile</strong>, then <strong>Privacy &amp; Data</strong>.</li><li>Choose <strong>Delete account</strong> and review what will be removed.</li><li>Confirm after the app asks you to sign in again. This recent-authentication check protects your account.</li></ol><p>The app signs you out as soon as the request is accepted. The deletion worker normally begins immediately and retries safely after temporary failures. Allow up to 30 days for completion or a legally required exception; contact Support if you need a status update.</p></section>
+  <section><h2>If you cannot access the app</h2><p>Email <a href="mailto:info@onmyradar.pro?subject=Account%20deletion%20request">info@onmyradar.pro</a> from the address associated with the account. Tell us only that you want deletion and which sign-in method you used. We will provide a safe verification step; do not send a password, sign-in code, authentication token, or identity document by ordinary email.</p></section>
+  <section><h2>What is deleted</h2><p>Your authentication identity, profile, Radars and versions, matches, saved events, feedback, notification preferences and tokens, submissions and reports, event annotations, export jobs and files, and other customer-owned product records are removed through a bounded, resumable workflow. Your current demand contribution is withdrawn before identity deletion.</p></section>
+  <section><h2>What may remain temporarily</h2><ul><li>Minimal non-content deletion-job evidence for up to 90 days so deletion can be proven and safely retried.</li><li>A one-way account identifier hash for 30 days to prevent accidental profile recreation while deletion settles.</li><li>Restricted audit or moderation records for up to 365 days where needed for security, abuse prevention, disputes, or legal duties.</li><li>Non-personal aggregate event information that cannot reasonably identify you.</li></ul><p>Backups and provider systems age out under their controlled schedules and are not restored to the active product. A legal preservation duty can delay deletion of only the affected record.</p></section>
+  <section><h2>Confirmation and help</h2><p>The app confirms when your request is accepted; a transactional receipt may also be sent when email delivery is available. Because the authentication identity is deleted last, you cannot sign in afterward to view status. Contact <a href="{{ '/support/' | url }}">Support</a> from the account email if the request appears incomplete.</p></section>
+</article>

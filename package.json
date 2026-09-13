@@ -6,10 +6,11 @@
   "scripts": {
     "build": "eleventy",
     "dev": "eleventy --serve",
-    "test": "npm run build && vitest run"
+    "test": "npm run build && vitest run",
+    "test:production": "SITE_ENV=production npm run test"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^3.1.2",
-    "vitest": "^5.0.0"
+    "@11ty/eleventy": "3.1.6",
+    "vitest": "5.0.0"
   }
 }
