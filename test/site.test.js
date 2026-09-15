@@ -13,8 +13,20 @@ describe("generated site", () => {
     ["German support", "_site/de/hilfe/index.html", "Wir helfen weiter"],
     ["English account deletion", "_site/delete-account/index.html", "Delete your account"],
     ["German account deletion", "_site/de/konto-loeschen/index.html", "Konto löschen"],
+    ["Private app-link fallback", "_site/app/index.html", "Continue in the OnMyRadar app"],
   ])("contains required %s content", async (_name, path, content) => {
     await expect(readFile(path, "utf8")).resolves.toContain(content);
+  });
+
+  it("keeps private communication fallbacks out of search results", async () => {
+    const fallback = await readFile("_site/app/index.html", "utf8");
+    expect(fallback).toContain('name="robots" content="noindex,nofollow"');
+    expect(fallback).toContain("is not displayed on the public website");
+    expect(fallback).not.toMatch(/match_[A-Za-z0-9_-]+|notification_[A-Za-z0-9_-]+/);
+
+    const notFound = await readFile("_site/404.html", "utf8");
+    expect(notFound).toContain("its destination is private");
+    expect(notFound).toContain('href="/app/"');
   });
 
   it("publishes robots and sitemap files", async () => {
