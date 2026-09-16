@@ -14,6 +14,7 @@ describe("generated site", () => {
     ["English account deletion", "_site/delete-account/index.html", "Delete your account"],
     ["German account deletion", "_site/de/konto-loeschen/index.html", "Konto löschen"],
     ["Private app-link fallback", "_site/app/index.html", "Continue in the OnMyRadar app"],
+    ["Public event preview shell", "_site/events/index.html", "Loading event"],
   ])("contains required %s content", async (_name, path, content) => {
     await expect(readFile(path, "utf8")).resolves.toContain(content);
   });
@@ -27,6 +28,19 @@ describe("generated site", () => {
     const notFound = await readFile("_site/404.html", "utf8");
     expect(notFound).toContain("its destination is private");
     expect(notFound).toContain('href="/app/"');
+  });
+
+  it("keeps public preview configuration fail-closed and privacy-minimal", async () => {
+    const preview = await readFile("_site/events/index.html", "utf8");
+    expect(preview).toContain('data-event-preview');
+    expect(preview).toContain('data-enabled="false"');
+    expect(preview).toContain('name="robots" content="noindex,nofollow"');
+    expect(preview).toContain('src="/assets/event-preview.js"');
+    expect(preview).not.toMatch(/ownerId|matchId|radarId|sourceUrl|latitude|longitude|address/);
+
+    const fallback = await readFile("_site/404.html", "utf8");
+    expect(fallback).toContain('data-fallback="true"');
+    expect(fallback).toContain('data-standard-not-found');
   });
 
   it("publishes robots and sitemap files", async () => {

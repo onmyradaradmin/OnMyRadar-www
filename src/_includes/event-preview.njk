@@ -1,0 +1,14 @@
+<article class="prose event-preview" data-event-preview data-fallback="{{ 'true' if eventPreviewFallback else 'false' }}" data-enabled="{{ 'true' if eventPreviewConfig.enabled else 'false' }}" data-api-key="{{ eventPreviewConfig.apiKey | escape }}" data-app-id="{{ eventPreviewConfig.appId | escape }}" data-project-id="{{ eventPreviewConfig.projectId | escape }}" data-app-check-site-key="{{ eventPreviewConfig.appCheckSiteKey | escape }}" data-functions-region="{{ eventPreviewConfig.functionsRegion | escape }}" aria-live="polite" aria-busy="true"{% if eventPreviewFallback %} hidden{% endif %}>
+  <p class="eyebrow">OnMyRadar</p>
+  <h1 data-preview-title>Loading event…</h1>
+  <p data-preview-summary>Checking the latest verified event information.</p>
+  <div data-preview-details hidden>
+    <p data-preview-start></p>
+    <p data-preview-end></p>
+    <p data-preview-categories></p>
+    <p data-preview-attribution></p>
+    <p data-preview-verified></p>
+  </div>
+  <p><a class="button" href="{{ '/' | url }}">OnMyRadar home</a></p>
+</article>
+<script src="{{ '/assets/event-preview.js' | url }}" type="module"></script>

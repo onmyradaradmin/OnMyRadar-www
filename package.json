@@ -4,13 +4,17 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "build": "eleventy",
+    "build": "eleventy && esbuild client/event-preview-client.js --bundle --minify --format=esm --outfile=_site/assets/event-preview.js",
     "dev": "eleventy --serve",
     "test": "npm run build && vitest run",
     "test:production": "SITE_ENV=production npm run test"
   },
   "devDependencies": {
     "@11ty/eleventy": "3.1.6",
+    "esbuild": "0.28.2",
     "vitest": "5.0.0"
+  },
+  "dependencies": {
+    "firebase": "12.19.0"
   }
 }

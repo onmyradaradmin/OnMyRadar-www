@@ -1,9 +1,6 @@
 name: Validate and deploy Pages
 
 on:
-  pull_request:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -16,9 +13,16 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      EVENT_PREVIEW_ENABLED: ${{ vars.EVENT_PREVIEW_ENABLED }}
+      PUBLIC_FIREBASE_API_KEY: ${{ vars.PUBLIC_FIREBASE_API_KEY }}
+      PUBLIC_FIREBASE_APP_ID: ${{ vars.PUBLIC_FIREBASE_APP_ID }}
+      PUBLIC_FIREBASE_PROJECT_ID: ${{ vars.PUBLIC_FIREBASE_PROJECT_ID }}
+      PUBLIC_FIREBASE_APP_CHECK_SITE_KEY: ${{ vars.PUBLIC_FIREBASE_APP_CHECK_SITE_KEY }}
+      PUBLIC_FIREBASE_FUNCTIONS_REGION: ${{ vars.PUBLIC_FIREBASE_FUNCTIONS_REGION }}
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
         with:
           node-version: 22
           cache: npm
@@ -31,7 +35,7 @@ jobs:
         run: npm run test:production
       - name: Audit production dependencies
         run: npm audit --omit=dev --audit-level=high
-      - uses: actions/upload-pages-artifact@v5
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5
         if: >-
           github.event_name != 'pull_request' &&
           github.event.repository.visibility == 'public'
@@ -52,4 +56,4 @@ jobs:
       id-token: write
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v5
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5
