@@ -68,6 +68,8 @@ describe("generated site", () => {
       .resolves.toContain("Contact: mailto:info@onmyradar.pro");
     await expect(readFile("_site/.well-known/apple-app-site-association", "utf8"))
       .resolves.toContain("AH26GKFR55.pro.onmyradar.app");
+    await expect(readFile(".github/workflows/pages.yml", "utf8"))
+      .resolves.toContain("include-hidden-files: true");
   });
 
   it("publishes only the verified production Apple association", async () => {
