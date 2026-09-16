@@ -1,0 +1,30 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": [
+          "AH26GKFR55.pro.onmyradar.app"
+        ],
+        "components": [
+          {
+            "/": "/events/*",
+            "comment": "Canonical public event-share links"
+          },
+          {
+            "/": "/app/matches/*",
+            "comment": "Authenticated Match email links"
+          },
+          {
+            "/": "/app/events/*",
+            "comment": "Authenticated event-change email links"
+          },
+          {
+            "/": "/app/notifications/*",
+            "comment": "Authenticated cancellation email links"
+          }
+        ]
+      }
+    ]
+  }
+}

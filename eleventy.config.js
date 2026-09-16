@@ -5,6 +5,9 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({"src/icon-192.png": "icon-192.png"});
   eleventyConfig.addPassthroughCopy({"src/icon-512.png": "icon-512.png"});
   eleventyConfig.addPassthroughCopy({"src/favicon.ico": "favicon.ico"});
+  eleventyConfig.addPassthroughCopy({
+    "src/.well-known/apple-app-site-association": ".well-known/apple-app-site-association",
+  });
   eleventyConfig.addGlobalData("isProduction", process.env.SITE_ENV === "production");
   const eventPreviewConfig = readEventPreviewConfig(process.env);
   eleventyConfig.addGlobalData("eventPreviewConfig", eventPreviewConfig);

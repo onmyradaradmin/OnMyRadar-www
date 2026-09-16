@@ -59,6 +59,29 @@ describe("generated site", () => {
     await expect(readFile("_site/sitemap.xml", "utf8")).resolves.toContain("<urlset");
   });
 
+  it("publishes only the verified production Apple association", async () => {
+    const association = JSON.parse(await readFile(
+      "_site/.well-known/apple-app-site-association",
+      "utf8",
+    ));
+    expect(association).toEqual({
+      applinks: {
+        apps: [],
+        details: [{
+          appIDs: ["AH26GKFR55.pro.onmyradar.app"],
+          components: [
+            {"/": "/events/*", comment: "Canonical public event-share links"},
+            {"/": "/app/matches/*", comment: "Authenticated Match email links"},
+            {"/": "/app/events/*", comment: "Authenticated event-change email links"},
+            {"/": "/app/notifications/*", comment: "Authenticated cancellation email links"},
+          ],
+        }],
+      },
+    });
+    await expect(readFile("_site/.well-known/assetlinks.json", "utf8"))
+      .rejects.toMatchObject({code: "ENOENT"});
+  });
+
   it("supports the GitHub Pages project path", async () => {
     const home = await readFile("_site/index.html", "utf8");
     const prefix = process.env.SITE_PATH_PREFIX ?? "/";
