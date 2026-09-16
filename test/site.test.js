@@ -32,11 +32,20 @@ describe("generated site", () => {
 
   it("keeps public preview configuration fail-closed and privacy-minimal", async () => {
     const preview = await readFile("_site/events/index.html", "utf8");
+    const enabled = process.env.EVENT_PREVIEW_ENABLED === "true";
     expect(preview).toContain('data-event-preview');
-    expect(preview).toContain('data-enabled="false"');
+    expect(preview).toContain(`data-enabled="${enabled}"`);
     expect(preview).toContain('name="robots" content="noindex,nofollow"');
     expect(preview).toContain('src="/assets/event-preview.js"');
     expect(preview).not.toMatch(/ownerId|matchId|radarId|sourceUrl|latitude|longitude|address/);
+    if (enabled) {
+      expect(preview).toContain("https://firebaseappcheck.googleapis.com");
+      expect(preview).toContain("https://us-west1-onmyradar-dev-508414.cloudfunctions.net");
+      expect(preview).toContain('data-project-id="onmyradar-dev-508414"');
+    } else {
+      expect(preview).toContain("connect-src 'none'");
+      expect(preview).toContain('data-project-id=""');
+    }
 
     const fallback = await readFile("_site/404.html", "utf8");
     expect(fallback).toContain('data-fallback="true"');
