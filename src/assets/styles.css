@@ -29,12 +29,13 @@ a:focus-visible { outline: 3px solid #087ff5; outline-offset: 4px; border-radius
 .brand { display: flex; align-items: center; gap: .7rem; font-weight: 800; letter-spacing: -.03em; text-decoration: none; }
 .brand img { border-radius: 12px; }
 .site-header nav, footer nav { display: flex; align-items: center; flex-wrap: wrap; gap: 1.15rem; font-size: .9rem; font-weight: 600; }
+.site-header nav > a { display: inline-flex; align-items: center; min-height: 44px; }
 .site-header nav a, footer nav a { text-decoration: none; }
 .site-header nav a:hover, footer nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
-.language-switcher { display: flex; padding: .2rem; border: 1px solid var(--line); border-radius: 999px; }
-.language-switcher a { padding: .28rem .48rem; border-radius: 999px; font-size: .75rem; }
+.language-switcher { display: flex; align-items: center; height: 44px; padding: 3px; border: 1px solid var(--line); border-radius: 999px; }
+.language-switcher a { display: inline-flex; align-items: center; min-height: 36px; padding: 0 .55rem; border-radius: 999px; font-size: .75rem; }
 .language-switcher a[aria-current="page"] { color: white; background: var(--ink); text-decoration: none; }
-.nav-cta { display: inline-flex; align-items: center; padding: .65rem 1rem; color: white; background: var(--green-dark); border-radius: 999px; }
+.nav-cta { height: 44px; padding: 0 1rem; color: white; background: var(--green-dark); border-radius: 999px; }
 .nav-cta:hover { text-decoration: none !important; background: var(--green); }
 
 main { max-width: 78rem; margin: auto; padding: 0 clamp(1rem, 4vw, 3rem) 5rem; }
