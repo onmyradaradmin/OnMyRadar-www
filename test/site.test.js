@@ -61,6 +61,15 @@ describe("generated site", () => {
     await expect(readFile("_site/sitemap.xml", "utf8")).resolves.toContain("<urlset");
   });
 
+  it("disables Jekyll filtering so security and app-association files remain public", async () => {
+    await expect(readFile("_site/.nojekyll", "utf8"))
+      .resolves.toContain("Publish the Eleventy artifact verbatim");
+    await expect(readFile("_site/.well-known/security.txt", "utf8"))
+      .resolves.toContain("Contact: mailto:info@onmyradar.pro");
+    await expect(readFile("_site/.well-known/apple-app-site-association", "utf8"))
+      .resolves.toContain("AH26GKFR55.pro.onmyradar.app");
+  });
+
   it("publishes only the verified production Apple association", async () => {
     const association = JSON.parse(await readFile(
       "_site/.well-known/apple-app-site-association",

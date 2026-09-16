@@ -1,6 +1,7 @@
 import {readEventPreviewConfig} from "./config/event-preview-config.js";
 
 export default function (eleventyConfig) {
+  eleventyConfig.addPassthroughCopy({"src/.nojekyll": ".nojekyll"});
   eleventyConfig.addPassthroughCopy({"src/assets": "assets"});
   eleventyConfig.addPassthroughCopy({"src/icon-192.png": "icon-192.png"});
   eleventyConfig.addPassthroughCopy({"src/icon-512.png": "icon-512.png"});
