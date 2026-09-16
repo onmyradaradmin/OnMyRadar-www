@@ -1,6 +1,8 @@
 import {readFile} from "node:fs/promises";
 import {describe, expect, it} from "vitest";
 
+const pathPrefix = process.env.SITE_PATH_PREFIX ?? "/";
+
 describe("generated site", () => {
   it.each([
     ["English home", "_site/index.html", 'lang="en"'],
@@ -27,7 +29,7 @@ describe("generated site", () => {
 
     const notFound = await readFile("_site/404.html", "utf8");
     expect(notFound).toContain("its destination is private");
-    expect(notFound).toContain('href="/app/"');
+    expect(notFound).toContain(`href="${pathPrefix}app/"`);
   });
 
   it("keeps public preview configuration fail-closed and privacy-minimal", async () => {
@@ -36,7 +38,7 @@ describe("generated site", () => {
     expect(preview).toContain('data-event-preview');
     expect(preview).toContain(`data-enabled="${enabled}"`);
     expect(preview).toContain('name="robots" content="noindex,nofollow"');
-    expect(preview).toContain('src="/assets/event-preview.js"');
+    expect(preview).toContain(`src="${pathPrefix}assets/event-preview.js"`);
     expect(preview).not.toMatch(/ownerId|matchId|radarId|sourceUrl|latitude|longitude|address/);
     if (enabled) {
       expect(preview).toContain("https://firebaseappcheck.googleapis.com");
@@ -84,9 +86,8 @@ describe("generated site", () => {
 
   it("supports the GitHub Pages project path", async () => {
     const home = await readFile("_site/index.html", "utf8");
-    const prefix = process.env.SITE_PATH_PREFIX ?? "/";
-    expect(home).toContain(`href="${prefix}assets/styles.css"`);
-    expect(home).toContain(`src="${prefix}icon-192.png"`);
+    expect(home).toContain(`href="${pathPrefix}assets/styles.css"`);
+    expect(home).toContain(`src="${pathPrefix}icon-192.png"`);
   });
 
   it("only upgrades subresources when the site is served over production HTTPS", async () => {
