@@ -88,4 +88,13 @@ describe("generated site", () => {
     expect(home).toContain(`href="${prefix}assets/styles.css"`);
     expect(home).toContain(`src="${prefix}icon-192.png"`);
   });
+
+  it("only upgrades subresources when the site is served over production HTTPS", async () => {
+    const home = await readFile("_site/index.html", "utf8");
+    if (process.env.SITE_ENV === "production") {
+      expect(home).toContain("upgrade-insecure-requests");
+    } else {
+      expect(home).not.toContain("upgrade-insecure-requests");
+    }
+  });
 });
