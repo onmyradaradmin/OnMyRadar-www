@@ -109,4 +109,16 @@ describe("generated site", () => {
       expect(home).not.toContain("upgrade-insecure-requests");
     }
   });
+
+  it("does not claim header-only framing protection through an ignored meta directive", async () => {
+    const home = await readFile("_site/index.html", "utf8");
+    expect(home).toContain('http-equiv="Content-Security-Policy"');
+    expect(home).not.toContain("frame-ancestors");
+  });
+
+  it("keeps decorative preview copy out of the document heading hierarchy", async () => {
+    const home = await readFile("_site/index.html", "utf8");
+    expect(home).toContain('<strong class="mock-title">Night at the science museum</strong>');
+    expect(home).not.toContain("<h3>Night at the science museum</h3>");
+  });
 });

@@ -44,7 +44,7 @@ h1 { max-width: 12ch; margin: .7rem 0 1.5rem; font-size: clamp(3.2rem, 7vw, 6.7r
 h1 em { color: var(--green); font-style: normal; }
 h2 { margin: .5rem 0 1.5rem; font-size: clamp(2.1rem, 4.7vw, 4rem); line-height: 1.05; letter-spacing: -.055em; }
 h3 { letter-spacing: -.025em; }
-.eyebrow { margin: 0; color: var(--green); font-size: .78rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+.eyebrow { margin: 0; color: #0068cf; font-size: .78rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
 .hero { min-height: 43rem; display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; gap: clamp(2rem, 5vw, 6rem); padding: clamp(4rem, 7vw, 7rem) 0 5rem; }
 .lede { max-width: 41rem; margin: 0; color: var(--muted); font-size: clamp(1.15rem, 2vw, 1.42rem); line-height: 1.6; }
 .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 1.3rem; margin-top: 2rem; }
@@ -68,7 +68,7 @@ h3 { letter-spacing: -.025em; }
 .mock-header strong { font-size: 1.35rem; font-weight: 800; }
 .mock-card { margin-top: .75rem; padding: 1rem; background: white; border: 1px solid #e7e4dc; border-radius: 1rem; box-shadow: 0 8px 25px #17211d0d; }
 .mock-card.featured { min-height: 10.5rem; padding-top: 4rem; color: white; background: linear-gradient(155deg, #087ff5, #062044); }
-.mock-card h3 { margin: .55rem 0 .3rem; font-size: 1rem; }
+.mock-card .mock-title { display: block; margin: .55rem 0 .3rem; font-size: 1rem; }
 .mock-card p, .mock-card small { margin: 0; font-size: .65rem; opacity: .85; }
 .match-pill { padding: .25rem .45rem; color: var(--green-dark); background: var(--lime); border-radius: 99px; font-size: .58rem; font-weight: 800; }
 .mock-line { display: block; width: 60%; height: .45rem; margin: .5rem 0; background: #e1ded5; border-radius: 99px; }
@@ -114,7 +114,7 @@ figcaption span { color: var(--muted); font-size: .88rem; }
 .trust-list article { padding-top: 1rem; border-top: 1px solid var(--line); }
 .trust-list h3 { margin: .5rem 0; font-size: 1rem; }
 .trust-list p { margin: 0; color: var(--muted); font-size: .92rem; line-height: 1.6; }
-.final-cta { padding: clamp(4rem, 9vw, 7rem); color: white; background: var(--green); border-radius: 2.5rem; text-align: center; }
+.final-cta { padding: clamp(4rem, 9vw, 7rem); color: white; background: var(--green-dark); border-radius: 2.5rem; text-align: center; }
 .final-cta h2 { margin-inline: auto; font-size: clamp(2.5rem, 6vw, 5rem); }
 .final-cta > p:not(.eyebrow) { max-width: 40rem; margin: 0 auto 1.7rem; color: #e2f1ec; font-size: 1.1rem; line-height: 1.6; }
 .button-light { color: var(--green-dark); background: var(--lime); box-shadow: none; }
