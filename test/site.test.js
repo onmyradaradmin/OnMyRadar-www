@@ -41,7 +41,10 @@ describe("generated site", () => {
     expect(preview).toContain(`src="${pathPrefix}assets/event-preview.js"`);
     expect(preview).not.toMatch(/ownerId|matchId|radarId|sourceUrl|latitude|longitude|address/);
     if (enabled) {
-      expect(preview).toContain("https://firebaseappcheck.googleapis.com");
+      expect(preview).toContain(
+        "connect-src 'self' https://content-firebaseappcheck.googleapis.com " +
+        "https://firebaseappcheck.googleapis.com https://www.google.com/recaptcha/",
+      );
       expect(preview).toContain("https://us-west1-onmyradar-dev-508414.cloudfunctions.net");
       expect(preview).toContain('data-project-id="onmyradar-dev-508414"');
     } else {
