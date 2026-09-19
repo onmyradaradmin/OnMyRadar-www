@@ -81,7 +81,7 @@ h3 { letter-spacing: -.025em; }
 .section-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 7vw, 8rem); padding: clamp(6rem, 10vw, 9rem) 0; }
 .section-copy { padding-top: 1.6rem; color: var(--muted); font-size: 1.15rem; line-height: 1.75; }
 .section-copy p:first-child { margin-top: 0; }
-.steps-section, .use-cases { padding: clamp(5rem, 9vw, 8rem) clamp(1.2rem, 4vw, 3.5rem); color: white; background: var(--green-dark); border-radius: 2.5rem; }
+.steps-section, .use-cases { padding: clamp(3rem, 6vw, 5rem) clamp(1.2rem, 4vw, 3.5rem); color: white; background: var(--green-dark); border-radius: 2.5rem; }
 .section-heading { max-width: 48rem; }
 .steps-section .eyebrow, .use-cases .eyebrow, .final-cta .eyebrow { color: var(--lime); }
 .steps { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 4rem; border-top: 1px solid #ffffff30; }
@@ -114,7 +114,7 @@ figcaption span { color: var(--muted); font-size: .88rem; }
 .trust-list article { padding-top: 1rem; border-top: 1px solid var(--line); }
 .trust-list h3 { margin: .5rem 0; font-size: 1rem; }
 .trust-list p { margin: 0; color: var(--muted); font-size: .92rem; line-height: 1.6; }
-.final-cta { padding: clamp(4rem, 9vw, 7rem); color: white; background: var(--green-dark); border-radius: 2.5rem; text-align: center; }
+.final-cta { padding: clamp(3rem, 6vw, 5rem); color: white; background: var(--green-dark); border-radius: 2.5rem; text-align: center; }
 .final-cta h2 { margin-inline: auto; font-size: clamp(2.5rem, 6vw, 5rem); }
 .final-cta > p:not(.eyebrow) { max-width: 40rem; margin: 0 auto 1.7rem; color: #e2f1ec; font-size: 1.1rem; line-height: 1.6; }
 .button-light { color: var(--green-dark); background: var(--lime); box-shadow: none; }
@@ -124,6 +124,7 @@ figcaption span { color: var(--muted); font-size: .88rem; }
 .prose h2 { margin-top: 3rem; font-size: 1.65rem; letter-spacing: -.035em; }
 .prose p, .prose li { color: #414b47; }
 .prose a { color: var(--green-dark); font-weight: 600; text-underline-offset: 3px; }
+.prose .button { color: white; }
 .last-updated { color: var(--muted); font-size: .9rem; }
 .legal-notice { padding: 1.2rem 1.35rem; background: #dff7fb; border-left: 4px solid var(--green); border-radius: .4rem; }
 .legal-toc { display: flex; flex-wrap: wrap; gap: .65rem 1rem; margin: 2.5rem 0; padding: 1.25rem; background: var(--white); border: 1px solid var(--line); border-radius: 1rem; font-size: .9rem; }
