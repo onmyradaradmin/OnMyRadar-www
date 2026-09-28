@@ -116,14 +116,17 @@ describe("generated site", () => {
   it("does not claim header-only framing protection through an ignored meta directive", async () => {
     const home = await readFile("_site/index.html", "utf8");
     expect(home).toContain('http-equiv="Content-Security-Policy"');
-    expect(home).toContain("script-src 'none'");
+    expect(home).toContain("script-src 'self'");
     expect(home).toContain("connect-src 'self'");
     expect(home).not.toContain("frame-ancestors");
+
+    const privacy = await readFile("_site/privacy/index.html", "utf8");
+    expect(privacy).toContain("script-src 'none'");
   });
 
-  it("keeps decorative preview copy out of the document heading hierarchy", async () => {
+  it("uses a real app screenshot in the home-page hero", async () => {
     const home = await readFile("_site/index.html", "utf8");
-    expect(home).toContain('<strong class="mock-title">Night at the science museum</strong>');
-    expect(home).not.toContain("<h3>Night at the science museum</h3>");
+    expect(home).toContain('src="/assets/screenshot-matches.png"');
+    expect(home).not.toContain("App preview coming soon");
   });
 });

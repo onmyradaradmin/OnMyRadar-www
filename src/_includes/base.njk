@@ -6,7 +6,7 @@
     <meta name="description" content="{{ description }}">
     <meta name="theme-color" content="#03162f">
     <meta name="robots" content="{{ 'index,follow' if isProduction and not noindex else 'noindex,nofollow' }}">
-    <meta http-equiv="Content-Security-Policy" content="{% if eventPreview and eventPreviewConfig.enabled %}default-src 'self'; script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://content-firebaseappcheck.googleapis.com https://firebaseappcheck.googleapis.com https://www.google.com/recaptcha/ https://{{ eventPreviewConfig.functionsRegion }}-{{ eventPreviewConfig.projectId }}.cloudfunctions.net; frame-src https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/;{% elif eventPreview %}default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none';{% else %}default-src 'self'; script-src 'none'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self';{% endif %} object-src 'none'; base-uri 'none'; form-action 'none';{% if isProduction %} upgrade-insecure-requests{% endif %}">
+    <meta http-equiv="Content-Security-Policy" content="{% if eventPreview and eventPreviewConfig.enabled %}default-src 'self'; script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://content-firebaseappcheck.googleapis.com https://firebaseappcheck.googleapis.com https://www.google.com/recaptcha/ https://{{ eventPreviewConfig.functionsRegion }}-{{ eventPreviewConfig.projectId }}.cloudfunctions.net; frame-src https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/;{% elif eventPreview %}default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none';{% else %}default-src 'self'; script-src {% if isHome %}'self'{% else %}'none'{% endif %}; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self';{% endif %} object-src 'none'; base-uri 'none'; form-action mailto:;{% if isProduction %} upgrade-insecure-requests{% endif %}">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="OnMyRadar">
@@ -46,7 +46,7 @@
         {% if alternateUrl %}
           <span class="language-switcher" aria-label="{{ 'Language' if locale == 'en' else 'Sprache' }}"><a lang="en" hreflang="en" href="{{ (page.url if locale == 'en' else alternateUrl) | url }}"{% if locale == 'en' %} aria-current="page"{% endif %}>EN</a><a lang="de" hreflang="de" href="{{ (page.url if locale == 'de' else alternateUrl) | url }}"{% if locale == 'de' %} aria-current="page"{% endif %}>DE</a></span>
         {% endif %}
-        <a class="nav-cta" href="mailto:info@onmyradar.pro?subject=OnMyRadar%20Beta">{{ 'Join beta' if locale == 'en' else 'Beta testen' }}</a>
+        <a class="nav-cta" href="{{ ('/#early-access' if locale == 'en' else '/de/#fruehzugang') | url }}">{{ 'Get early access' if locale == 'en' else 'Frühzugang' }}</a>
       </nav>
     </header>
     <main id="content" tabindex="-1">{{ content | safe }}</main>
@@ -55,5 +55,6 @@
       <nav aria-label="{{ 'Legal and support' if locale == 'en' else 'Rechtliches und Hilfe' }}"><a href="{{ ('/privacy/' if locale == 'en' else '/de/privacy/') | url }}">{{ 'Privacy' if locale == 'en' else 'Datenschutz' }}</a><a href="{{ ('/terms/' if locale == 'en' else '/de/terms/') | url }}">{{ 'Terms' if locale == 'en' else 'Bedingungen' }}</a><a href="{{ ('/support/' if locale == 'en' else '/de/hilfe/') | url }}">{{ 'Support' if locale == 'en' else 'Hilfe' }}</a><a href="{{ ('/delete-account/' if locale == 'en' else '/de/konto-loeschen/') | url }}">{{ 'Delete account' if locale == 'en' else 'Konto löschen' }}</a></nav>
       <p class="copyright">© 2026 OnMyRadar · <a href="mailto:info@onmyradar.pro">info@onmyradar.pro</a></p>
     </footer>
+    {% if isHome %}<script src="{{ '/assets/testimonial-carousel.js' | url }}" defer></script>{% endif %}
   </body>
 </html>
