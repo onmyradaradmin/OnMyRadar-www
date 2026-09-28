@@ -98,6 +98,9 @@ h3 { letter-spacing: -.025em; }
 .preview-gallery figure { margin: 0; text-align: center; }
 .preview-gallery .phone-frame { width: 14rem; margin: auto; }
 .preview-featured .phone-frame { width: 16rem; }
+.screenshot-frame::before { display: none; }
+.screenshot-screen { padding: 0; background: #fff; }
+.screenshot-screen img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .placeholder-screen { display: grid; align-content: center; gap: 1rem; background: repeating-linear-gradient(135deg, #faf8f2, #faf8f2 18px, #f1eee6 18px, #f1eee6 36px); }
 .placeholder-screen strong { margin-top: 1.2rem; font-size: 1.35rem; font-weight: 800; }
 .placeholder-screen p { margin: 0; color: var(--muted); font-size: .8rem; line-height: 1.5; }
