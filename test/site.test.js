@@ -116,8 +116,9 @@ describe("generated site", () => {
   it("does not claim header-only framing protection through an ignored meta directive", async () => {
     const home = await readFile("_site/index.html", "utf8");
     expect(home).toContain('http-equiv="Content-Security-Policy"');
-    expect(home).toContain("script-src 'self'");
+    expect(home).toContain("script-src 'none'");
     expect(home).toContain("connect-src 'self'");
+    expect(home).toContain("form-action 'none'");
     expect(home).not.toContain("frame-ancestors");
 
     const privacy = await readFile("_site/privacy/index.html", "utf8");
